@@ -1,0 +1,12 @@
+# Imagebase
+FROM nginx:latest
+
+# Copy html
+COPY index.html /usr/share/nginx/html/index.html
+
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+#port 
+EXPOSE 4000
+
