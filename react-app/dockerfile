@@ -1,0 +1,27 @@
+FROM node:14-alpine as builer
+
+WORKDIR /app
+
+# Install dependencies
+COPY package.json ./
+RUN npm install
+
+# Copy the rest files
+COPY . .
+
+# build the app
+RUN npm run build
+
+# run the server
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]
+
+#lightweight server
+FROM nginx:alpine
+# # Copy builder
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Port
+EXPOSE 80
+#run NGINX
+CMD ["nginx", "-g", "daemon off;"]
