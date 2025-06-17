@@ -1,0 +1,55 @@
+<odoo>
+    <record id="hms_patient_action" model="ir.actions.act_window">
+        <field name="name">HMS Patient Action</field>
+        <field name="res_model">hms.patient</field>
+    </record>
+    <record id="hms_patient_tree_view" model="ir.ui.view">
+        <field name="name">HMS Patient Tree View</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="first_name"/>
+                <field name="last_name"/>
+            </tree>
+        </field>
+    </record>
+    <!--form view-->
+      <record id="hms_patient_form_view" model="ir.ui.view">
+        <field name="name">HMS Patient Form View</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <notebook>
+                        <page string="Personal INFO">
+                            <group string="Personal info">
+                                <field name="first_name" required="1"/>
+                                <field name="last_name" required="1"/>
+                                <field name="birth_date"/>
+                                <field name="address"/>
+                                <field name="image"/>
+                                <field name="age"/>
+                            </group>
+                        </page>
+                        <page string="Medical Info">
+                        <group string="Medical Info">
+                            <field name="department_id" domain="[('is_opened', '=', True)]"/>
+                            <field name="history" modifiers='{"invisible": [["pcr", "=", false]]}'/>
+                            <field name="department_capacity"/>
+                            <field name="pcr"/>
+                            <field name="cr_ratio" modifiers='{"required": [["pcr", "=", true]], "invisible": [["pcr", "=", false]]}'/>
+                            <field name="state"/>
+                            <field name="blood_type"/>
+                        </group>
+                    </page>
+                    <page string='Doctor'>
+                        <field name="doctors_id" readonly="1" domain="[('department_id', '=', False)]"/>
+                    </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--form-->
+    <menuitem id="hms_patient_menu" name="Patient" parent="hms_employee_menu" action="hms_patient_action"/>
+</odoo>
