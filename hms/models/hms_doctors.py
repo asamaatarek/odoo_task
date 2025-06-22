@@ -6,6 +6,7 @@ class HMSDoctor(models.Model):
 
     first_name = fields.Char(string="First Name")
     last_name = fields.Char(string="Last Name")
+    name = fields.Char(string="Name")
     image = fields.Binary(string="Image")
     
     department_id = fields.Many2one('hms.department')

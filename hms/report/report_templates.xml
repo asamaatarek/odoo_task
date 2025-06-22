@@ -1,0 +1,36 @@
+<odoo>
+    <template id="patient_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="patient">
+                <div class="page" style="font-family: 'Arial', sans-serif; padding: 20px; color: #444;">
+                    <h2 style="text-align: center; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">
+                        Patient Status Report
+                    </h2>
+
+                    <div style="display: flex; justify-content: space-between; gap: 40px; margin-top: 25px;">
+                        <div style="flex: 1;  padding: 15px;">
+                            <h4 style="color: #2980b9; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Personal Info</h4>
+                            <p><strong>First Name:</strong> <t t-esc="patient.first_name"/></p>
+                            <p><strong>Last Name:</strong> <t t-esc="patient.last_name"/></p>
+                            <p><strong>Age:</strong> <t t-esc="patient.age"/></p>
+                            <p><strong>Birth Date:</strong> <t t-esc="patient.birth_date"/></p>
+                            <p><strong>Email:</strong> <t t-esc="patient.email"/></p>
+                        </div>
+
+                        <div style="flex: 1; padding: 15px;">
+                            <h4 style="color: #2980b9; border-bottom: 1px solid #ddd; padding-bottom: 5px;">Medical Info</h4>
+                            <p><strong>Department:</strong> <t t-esc="patient.department_id.name"/></p>
+                            <p><strong>Doctors:</strong>
+                                <t t-foreach="patient.doctors_id" t-as="doc" t-separator=", ">
+                                    <t t-esc="doc.name"/>
+                                </t>
+                            </p>
+                            <p><strong>PCR:</strong> <t t-esc="patient.pcr"/></p>
+                            <p><strong>Blood Type:</strong> <t t-esc="patient.blood_type"/></p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

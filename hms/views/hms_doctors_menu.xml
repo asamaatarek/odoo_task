@@ -13,5 +13,5 @@
             </tree>
         </field>
     </record>
-    <menuitem id="hms_doctors_menu" name="Doctor" parent="hms_employee_menu" action="hms_doctors_action"/>
+    <menuitem id="hms_doctors_menu" name="Doctor" parent="hms_employee_menu" action="hms_doctors_action" groups="hms.manager_group"/>
 </odoo>

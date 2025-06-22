@@ -1,4 +1,4 @@
 <odoo>
-    <menuitem id="hms_root_menu" name="HMS"/>
-    <menuitem id="hms_employee_menu" name="Employee" parent="hms_root_menu"/>
+    <menuitem id="hms_root_menu" name="HMS" groups="hms.manager_group,hms.user_group"/>
+    <menuitem id="hms_employee_menu" name="Employee" parent="hms_root_menu" groups="hms.manager_group,hms.user_group"/>
 </odoo>
